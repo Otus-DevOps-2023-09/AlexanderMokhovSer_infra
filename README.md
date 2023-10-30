@@ -49,3 +49,21 @@ yc compute instance create \
    --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
    --metadata-from-file='user-data=startup.yaml' \
    --metadata serial-port-enable=1
+
+В рамках ДЗ№5:
+
+Произведена устроновка Packer
+alexandermokhov@MacBook-Air-Alexander-2 AlexanderMokhovSer_infra % packer -v
+1.9.4
+Произведено создание сервисного аккаунта с именем service-account
+created_at: "2023-10-27T19:21:48.742134238Z"
+name: service-account
+Произведено делегирование прав доступа для сервисного аккаунта (editor)
+Создан Service account key file
+СОздан шаблон для Packer
+Созданы скрипты для provisioners
+Собран образ
+Создана ВМ
+Установлено приложение
+Проверена работа приложения на 9292 порт
+Создан шаблон с параметрами variables.json и в его зашиты дополнительные опции с параметрами
