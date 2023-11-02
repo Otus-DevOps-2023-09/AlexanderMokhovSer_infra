@@ -1,11 +1,11 @@
-#terraform {
- # required_providers {
-  #  yandex = {
-   #   source = "yandex-cloud/yandex"
-   # }
-  #}
-  #required_version = ">= 0.13"
-#}
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+  required_version = ">= 0.13"
+}
 
 provider "yandex" {
   service_account_key_file = var.service_account_key_file
@@ -15,12 +15,13 @@ provider "yandex" {
 }
 
 resource "yandex_compute_instance" "app" {
-  name = "reddit-app"
-
+  name = "reddit-app-${count.index}"
   resources {
     cores  = 2
     memory = 2
+    core_fraction = 20
   }
+  count = 2
 
   boot_disk {
     initialize_params {
@@ -39,7 +40,7 @@ resource "yandex_compute_instance" "app" {
 
   connection {
     type        = "ssh"
-    host        = yandex_compute_instance.app.network_interface.0.nat_ip_address
+    host        = self.network_interface.0.nat_ip_address
     user        = "ubuntu"
     agent       = false
     private_key = file(var.private_key_path)
