@@ -3,7 +3,7 @@ terraform {
     endpoint   = "storage.yandexcloud.net"
     bucket     = "mokhovas"
     region     = "ru-central1"
-    key        = "prod/terraform.tfstate"
+    key        = "prod.	tfstate"
 
     skip_region_validation      = true
     skip_credentials_validation = true
