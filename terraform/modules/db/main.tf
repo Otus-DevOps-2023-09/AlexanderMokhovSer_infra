@@ -1,11 +1,11 @@
-#terraform {
- # required_providers {
-  #  yandex = {
-   #   source = "yandex-cloud/yandex"
-   # }
-  #}
-  #required_version = ">= 0.13"
-#}
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
+  required_version = ">= 0.13"
+}
 
 resource "yandex_compute_instance" "db" {
   name = "reddit-db"
@@ -37,6 +37,13 @@ core_fraction = 50
     user  = "ubuntu"
     agent = false
     private_key = file(var.private_key_path)
+  }
+
+ provisioner "remote-exec" {
+    inline = [
+      "sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongodb.conf",
+      "sudo systemctl restart mongodb"
+    ]
   }
 
   metadata = {

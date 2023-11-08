@@ -38,6 +38,16 @@ variable "app_disk_image" {
   default     = "reddit-app-base"
 }
 variable "db_disk_image" {
-  description = "disk image for mongodb"
+  description = "disk image for reddit db"
   default     = "reddit-db-base"
+}
+
+variable access_key {
+  description = "key id"
+}
+variable secret_key {
+  description = "secret key"
+}
+variable bucket_name {
+  description = "bucket name"
 }
