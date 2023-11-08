@@ -20,7 +20,7 @@ module "app" {
   private_key_path = var.private_key_path
   app_disk_image   = var.app_disk_image
   subnet_id        = var.subnet_id
-  db_ip    	       = module.db.db_internal_ip
+  db_ip    	       = module.db.external_ip_address_db
   prov             = var.prov
 }
 module "db" {
