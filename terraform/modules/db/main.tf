@@ -49,7 +49,7 @@ resource "null_resource" "db" {
     private_key = file(var.private_key_path)
   }
     provisioner "file" {
-    content     = templatefile("${path.module}/files/mongod.conf.tmpl", { db_ip = yandex_compute_instance.db.network_interface.0.ip_address})
+    content     = templatefile("${path.module}/files/mongod.conf.tmpl", {db_ip = yandex_compute_instance.db.network_interface.0.ip_address})
     destination = "/tmp/mongod.conf"
   }
 
