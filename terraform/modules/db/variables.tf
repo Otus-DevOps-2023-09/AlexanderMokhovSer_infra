@@ -14,3 +14,7 @@ variable db_disk_image {
 variable "subnet_id" {
   description = "Subnet"
 }
+
+variable prov {
+  description = "using prov"
+}

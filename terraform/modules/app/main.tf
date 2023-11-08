@@ -34,6 +34,12 @@ terraform {
   ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
 
+resource "null_resource" "app" {
+  count = var.prov ? 1 : 0
+  triggers = {
+    cluster_instance_ids = yandex_compute_instance.app.id
+  }
+
  connection {
     type  = "ssh"
     host  = self.network_interface.0.nat_ip_address
@@ -43,17 +49,11 @@ terraform {
   }
 }
 
-  provisioner "file" {
-    source      = "./puma.service"
+ provisioner "file" {
+    content     = templatefile("${path.module}/files/puma.service.tmpl", { db_ip = var.db_ip})
     destination = "/tmp/puma.service"
   }
 
-  provisioner "remote-exec" {
-    script = "${path.module}/deploy.sh"
+ provisioner "remote-exec" {
+    script = "${path.module}/files/deploy.sh"
   }
-}
-
-resource "local_file" "template_puma" {
-  content = templatefile("${path.module}/puma.tpl", {db_address = var.db_ip_address})
-  filename = "./puma.service"
-}

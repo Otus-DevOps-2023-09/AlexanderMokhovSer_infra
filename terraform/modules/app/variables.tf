@@ -14,3 +14,10 @@ variable app_disk_image {
 variable "subnet_id" {
   description = "Subnet"
 }
+
+variable db_ip {
+  description = "database IP"
+}
+variable prov {
+  description = "using prov"
+}
