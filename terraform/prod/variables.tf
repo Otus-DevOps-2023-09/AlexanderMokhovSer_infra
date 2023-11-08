@@ -9,7 +9,7 @@ variable "zone" {
   # Значение по умолчанию
   default = "ru-central1-a"
 }
-variable region_id {
+variable "region_id" {
   description = "region"
   default     = "ru-central1"
 }
@@ -29,7 +29,15 @@ variable "service_account_key_file" {
 variable "private_key_path" {
   description = "Path to the private key for ssh access"
 }
-variable instances {
+variable "instances" {
   description = "count instances"
   default     = 1
+}
+variable "app_disk_image" {
+  description = "disk image for reddit app"
+  default     = "reddit-app-base"
+}
+variable "db_disk_image" {
+  description = "disk image for reddit db"
+  default     = "reddit-db-base"
 }
