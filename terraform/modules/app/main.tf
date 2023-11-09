@@ -34,11 +34,11 @@
   ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }
 
-#resource "null_resource" "app" {
- # count = var.prov ? 1 : 0
-  #triggers = {
-  #  cluster_instance_ids = yandex_compute_instance.app.id
-  #}
+resource "null_resource" "app" {
+  count = var.prov ? 1 : 0
+  triggers = {
+    cluster_instance_ids = yandex_compute_instance.app.id
+  }
 
  connection {
     type  = "ssh"
@@ -47,7 +47,6 @@
     agent = false
     private_key = file(var.private_key_path)
   }
-}
 
  provisioner "file" {
     content     = templatefile("${path.module}/files/puma.service.tmpl", { db_ip = var.db_ip})
@@ -56,4 +55,5 @@
 
  provisioner "remote-exec" {
     script = "${path.module}/files/deploy.sh"
+  }
   }
