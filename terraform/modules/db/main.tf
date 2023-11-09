@@ -57,4 +57,3 @@ resource "null_resource" "db" {
     script = "${path.module}/files/deploy.sh"
   }
 }
-}
