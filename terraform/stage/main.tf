@@ -1,7 +1,7 @@
 #terraform {
-  #required_providers {
-   # yandex = {
-   #   source = "yandex-cloud/yandex"
+ # required_providers {
+  #  yandex = {
+    #  source = "yandex-cloud/yandex"
    # }
  # }
  # required_version = ">= 0.13"
@@ -20,7 +20,8 @@ module "app" {
   private_key_path = var.private_key_path
   app_disk_image   = var.app_disk_image
   subnet_id        = var.subnet_id
-  db_ip_address    = module.db.external_ip_address_db
+  db_ip            = module.db.db_internal_ip
+  prov             = var.prov
 }
 module "db" {
   source           = "../modules/db"
@@ -28,4 +29,5 @@ module "db" {
   private_key_path = var.private_key_path
   db_disk_image    = var.db_disk_image
   subnet_id        = var.subnet_id
+  prov             = var.prov
 }
