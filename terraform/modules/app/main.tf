@@ -57,4 +57,3 @@
  provisioner "remote-exec" {
     script = "${path.module}/files/deploy.sh"
   }
-  }
