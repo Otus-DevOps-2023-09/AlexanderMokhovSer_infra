@@ -42,6 +42,11 @@ variable "db_disk_image" {
   default     = "reddit-db-base"
 }
 
+variable prov {
+  description = "using provisioner"
+  default = true
+}
+
 variable access_key {
   description = "key id"
 }
