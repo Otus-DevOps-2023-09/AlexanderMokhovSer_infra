@@ -1,0 +1,8 @@
+{
+    "id": "sfdsfdsf",
+    "service_account_id": "sdfsdfds",
+    "created_at": "2023-01-01T01:01:01.010101010Z",
+    "key_algorithm": "RSA_2048",
+    "public_key": "-----BEGIN PUBLIC KEY-----\nsdfsdfds\n-----END PUBLIC KEY-----\n",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nsdfdsfdsfds\n-----END PRIVATE KEY-----\n"
+ }

@@ -24,7 +24,7 @@ variable "subnet_id" {
   description = "Subnet"
 }
 variable "service_account_key_file" {
-  description = "key.json"
+  description = "key .json"
 }
 variable "private_key_path" {
   description = "Path to the private key for ssh access"
@@ -42,12 +42,16 @@ variable "db_disk_image" {
   default     = "reddit-db-base"
 }
 
+variable prov {
+  description = "using provisioner"
+  default = true
+}
+
 variable access_key {
   description = "key id"
-    default     = "YCAJEEmERUoIJd8h8m7xkeKjw"
 }
 variable secret_key {
-  description = "YCORBGLqQQe3G7s5BcLdHkzW6Ky7PQL6kOPbW535"
+  description = "secret key"
 }
 variable bucket_name {
   description = "bucket name"
