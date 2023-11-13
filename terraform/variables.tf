@@ -44,10 +44,10 @@ variable "db_disk_image" {
 
 variable access_key {
   description = "key id"
-    default     = "YCAJEEmERUoIJd8h8m7xkeKjw"
+    default     = "folder"
 }
 variable secret_key {
-  description = "YCORBGLqQQe3G7s5BcLdHkzW6Ky7PQL6kOPbW535"
+  description = "folder"
 }
 variable bucket_name {
   description = "bucket name"

@@ -2,7 +2,7 @@
  # required_providers {
   #  yandex = {
    #   source = "yandex-cloud/yandex"
-   # }
+    #}
  # }
  # required_version = ">= 0.13"
 #}
@@ -14,7 +14,7 @@ resource "yandex_compute_instance" "db" {
   }
 
   resources {
-core_fraction = 50
+core_fraction = 20
     cores  = 2
     memory = 2
   }
@@ -53,7 +53,7 @@ resource "null_resource" "db" {
     destination = "/tmp/mongod.conf"
   }
 
-  provisioner "remote-exec" {
-    script = "${path.module}/files/deploy.sh"
-  }
+  # provisioner "remote-exec" {
+   # script = "${path.module}/files/deploy.sh"
+    # }
 }

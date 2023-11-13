@@ -35,24 +35,26 @@ variable "instances" {
 }
 variable "app_disk_image" {
   description = "disk image for reddit app"
-  default     = "reddit-app-base"
+  default     = "fd82t0f5q5u7omar8gp3"
 }
 variable "db_disk_image" {
   description = "disk image for reddit db"
-  default     = "reddit-db-base"
+  default     = "fd869unf8578bbjpok0p"
 }
 
-variable prov {
+variable "prov" {
   description = "using provisioner"
-  default = true
+  default     = true
 }
 
-variable access_key {
+variable "access_key" {
   description = "key id"
+  default     = "YCAJEEmERUoIJd8h8m7xkeKjw"
 }
-variable secret_key {
+variable "secret_key" {
   description = "secret key"
+  default     = "YCORBGLqQQe3G7s5BcLdHkzW6Ky7PQL6kOPbW535"
 }
-variable bucket_name {
+variable "bucket_name" {
   description = "bucket name"
 }
