@@ -1,10 +1,10 @@
 #terraform {
- # required_providers {
-  #  yandex = {
-   #   source = "yandex-cloud/yandex"
-    #}
+#  required_providers {
+ #   yandex = {
+  #    source = "yandex-cloud/yandex"
+  #  }
  # }
- # required_version = ">= 0.13"
+  #required_version = ">= 0.13"
 #}
 
 resource "yandex_compute_instance" "db" {
@@ -41,19 +41,19 @@ resource "null_resource" "db" {
   triggers = {
     cluster_instance_ids = yandex_compute_instance.db.id
   }
- connection {
-    type        = "ssh"
-    host        = yandex_compute_instance.db.network_interface[0].nat_ip_address
-    user        = "ubuntu"
-    agent       = false
-    private_key = file(var.private_key_path)
-  }
-    provisioner "file" {
-    content     = templatefile("${path.module}/files/mongod.conf.tmpl", { db_ip = yandex_compute_instance.db.network_interface.0.ip_address})
-    destination = "/tmp/mongod.conf"
-  }
-
-  # provisioner "remote-exec" {
-   # script = "${path.module}/files/deploy.sh"
-    # }
+# connection {
+#    type        = "ssh"
+#    host        = yandex_compute_instance.db.network_interface[0].nat_ip_address
+#    user        = "ubuntu"
+#    agent       = false
+#    private_key = file(var.private_key_path)
+#  }
+#    provisioner "file" {
+#    content     = templatefile("${path.module}/files/mongod.conf.tmpl", { db_ip = yandex_compute_instance.db.network_interface.0.ip_address})
+#    destination = "/tmp/mongod.conf"
+#  }
+#
+#  provisioner "remote-exec" {
+#    script = "${path.module}/files/deploy.sh"
+#  }
 }

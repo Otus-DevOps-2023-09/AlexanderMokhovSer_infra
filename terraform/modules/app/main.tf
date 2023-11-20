@@ -1,7 +1,7 @@
-#terraform {
- #required_providers {
-  #yandex = {
-   #source = "yandex-cloud/yandex"
+terraform {
+# required_providers {
+ # yandex = {
+ #  source = "yandex-cloud/yandex"
 #}
 #}
 #required_version = ">= 0.13"
@@ -39,19 +39,19 @@ resource "null_resource" "app" {
   triggers = {
     cluster_instance_ids = yandex_compute_instance.app.id
   }
- connection {
-    type        = "ssh"
-    host        = yandex_compute_instance.app.network_interface[0].nat_ip_address
-    user        = "ubuntu"
-    agent       = false
-    private_key = file(var.private_key_path)
-  }
- provisioner "file" {
-    content     = templatefile("${path.module}/files/puma.service.tmpl", { db_ip = var.db_ip})
-    destination = "/tmp/puma.service"
-  }
-
- provisioner "remote-exec" {
-    script = "${path.module}/files/deploy.sh"
-  }
+# connection {
+#    type        = "ssh"
+#    host        = yandex_compute_instance.app.network_interface[0].nat_ip_address
+#    user        = "ubuntu"
+#    agent       = false
+#    private_key = file(var.private_key_path)
+#  }
+# provisioner "file" {
+#    content     = templatefile("${path.module}/files/puma.service.tmpl", { db_ip = var.db_ip})
+#    destination = "/tmp/puma.service"
+#  }
+#
+# provisioner "remote-exec" {
+#    script = "${path.module}/files/deploy.sh"
+#  }
 }
