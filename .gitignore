@@ -5,3 +5,5 @@ packer/variables.pkr.hcl
 *.tfstate.backup
 *.tfvars
 .terraform/
+*.retry
+.DS_Store
